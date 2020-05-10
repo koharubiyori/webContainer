@@ -1,5 +1,6 @@
 const Koa = require('koa')
 const serve = require('koa-static')
+const historyApiFullback = require('koa-history-api-fallback')
 
 const port = 8080
 const rootPath = 'app'
@@ -9,6 +10,7 @@ const serveOptions = {
 
 const app = new Koa()
 
+app.use(historyApiFullback())
 app.use(serve(rootPath, serveOptions))
 
 console.log('启动服务...')
